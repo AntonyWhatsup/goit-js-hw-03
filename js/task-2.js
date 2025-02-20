@@ -1,10 +1,14 @@
-function formatMessage(message, maxLength) {
-  return message.length <= maxLength ? message : message.slice(0, maxLength) + "...";
+function makeArray(firstArray, secondArray, maxLength) {
+  const combinedArray = firstArray.concat(secondArray);
+  if (combinedArray.length > maxLength) {
+      return combinedArray.slice(0, maxLength);
+  }
+  return combinedArray;
 }
 
-console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
-console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
-console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
-console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
+
+console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
+console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 5)); // ["Mango", "Poly", "Ajax", "Chelsea"]
+console.log(makeArray([], ["Ajax", "Chelsea"], 2)); // ["Ajax", "Chelsea"]
+console.log(makeArray(["Mango"], [], 1)); // ["Mango"]
+console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Ajax", "Chelsea"]
